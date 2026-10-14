@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import formatUtc from '../../../src/runtime/formatUtc.js';
+import formatUtc from '#runtime/formatUtc';
 
 describe('formatUtc', () => {
   const d = new Date('2026-03-02T00:00:01.527Z');

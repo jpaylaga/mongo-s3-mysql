@@ -5,6 +5,9 @@
 - One default export per file, named after the file (`types.ts`, `index.ts` and `cli.ts` excepted), and no named exports beside it: a helper two modules share gets its own file, and a test reaches a value through the default export; factories (`createX`), no classes.
 - Each command reads as a call chain from its orchestrator: `exportArchive` -> `resolveBatch` -> `planChunks` -> `exportChunk` -> `createPartWriter` / `uploadPart` -> `buildChunkManifest`; `verify` -> `resolveBatches` -> `listManifests` -> `pendingChunks` -> `verifyChunk` -> `writeChecks` -> `checkCompleteness`; `load` -> `createPlanner` -> `selectChunks`, then `runChunks` -> `loadChunk` -> `transformLine` -> `createBatcher` -> `writeBatch`.
 - Persisted records use `snake_case`, config and mapping files `camelCase`, in-process objects `camelCase`.
+- Imports are one block, in this order and each part sorted: Node built-ins, packages, `#` aliases, relative paths. Types come in on their own `import type` line.
+- Code under `src` is imported through `#` aliases (`import loadConfig from '#config/loadConfig'`), never through `../`. The aliases are the `imports` field of `package.json`: `#*` maps to `src/*.ts` while type-checking (the `source` condition in `tsconfig.json`) and in the tests (the alias in the vitest configs), and to `dist/*.js` when the built CLI runs. Tests import each other's helpers relatively.
+- Lines stay within 100 columns (Prettier, `.prettierrc`). Statements are separated by a blank line, except consecutive imports, one-line declarations and one-line calls.
 
 ```
 src/
@@ -45,6 +48,7 @@ test/
 
 ```bash
 npm ci
+npm run format:check       # Prettier: 100 columns, import order; `npm run format` rewrites
 npm run typecheck          # tsc over src and test
 npm test                   # unit suite (vitest, test/unit)
 npm run build              # dist/ from src/
@@ -56,7 +60,7 @@ npm run test:e2e           # Docker required; about a minute once the images are
 - The e2e suites start `mongo:7` (with authentication, so the connection string carries a password the output must never show), `mysql:8.0` and `adobe/s3mock` through Testcontainers, pinned by digest in `test/e2e/startStack.ts`. `MSM_E2E_S3=localstack` switches the S3 stand-in to `localstack/localstack` if the mock ever refuses an operation the tool needs; the pinned LocalStack release needs a license, so set `LOCALSTACK_AUTH_TOKEN` as well (it is forwarded into the container). A developer's `AWS_PROFILE` and `AWS_SESSION_TOKEN` are dropped for the run so the mock credentials are used.
 - `test/e2e/roundTrip.test.ts` walks the whole pipeline on a seeded twin of a real migration, including an interrupted export, an interrupted load, a delta, a deleted row and a rewritten part. `test/e2e/existingArchive.test.ts` drives the built CLI against an archive written with only the original exporter's keys.
 - The e2e runner drives `dist/cli.js`; `npm run test:e2e` builds first, and the runner rebuilds once per process anyway, so the built CLI is never stale.
-- CI (`.github/workflows/ci.yml`) runs the unit suite on Node 22 and 24, greps for em and en dashes, builds, checks `--help`, then runs the e2e suite.
+- CI (`.github/workflows/ci.yml`) runs the unit suite on Node 22 and 24, checks formatting, greps for em and en dashes, builds, checks `--help`, then runs the e2e suite.
 
 ## Conventions
 

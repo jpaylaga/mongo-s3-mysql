@@ -21,6 +21,7 @@ jobs:
       - name: no em or en dashes
         # Fails closed: exit 1 from grep means no match, anything else (a match, or grep itself failing) fails the step.
         run: rc=0; LC_ALL=C.UTF-8 grep -rnP '[\x{2013}\x{2014}]' --exclude-dir=node_modules --exclude-dir=dist --exclude-dir=.git . || rc=$?; test "$rc" -eq 1
+      - run: npm run format:check
       - run: npm run typecheck
       - run: npm test
       - run: npm run build

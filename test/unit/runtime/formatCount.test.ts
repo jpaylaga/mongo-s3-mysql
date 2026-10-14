@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import formatCount from '../../../src/runtime/formatCount.js';
+import formatCount from '#runtime/formatCount';
 
 describe('formatCount', () => {
   it('groups thousands with commas whatever the host locale', () => {

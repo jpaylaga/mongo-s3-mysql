@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import smallCollectionDocs from '../../../src/runtime/smallCollectionDocs.js';
+import smallCollectionDocs from '#runtime/smallCollectionDocs';
 
 describe('smallCollectionDocs', () => {
   it('is the one 1,000,000 limit inventory and rest: auto share', () => {

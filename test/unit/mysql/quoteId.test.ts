@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import quoteId from '../../../src/mysql/quoteId.js';
+import quoteId from '#mysql/quoteId';
 
 describe('quoteId', () => {
   it('backtick-quotes and doubles embedded backticks', () => {

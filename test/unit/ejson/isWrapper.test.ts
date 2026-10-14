@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import isWrapper from '../../../src/ejson/isWrapper.js';
+import isWrapper from '#ejson/isWrapper';
 
 describe('isWrapper', () => {
   it('is an object whose every key starts with $, and never the empty object', () => {

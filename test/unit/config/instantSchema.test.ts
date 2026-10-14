@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import instantSchema from '../../../src/config/instantSchema.js';
+import instantSchema from '#config/instantSchema';
 
 describe('instantSchema', () => {
   it('needs an offset and no fraction, the form the plan freezes', () => {

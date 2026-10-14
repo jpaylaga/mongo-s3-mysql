@@ -1,10 +1,12 @@
 import { describe, expect, it } from 'vitest';
-import exitCodes from '../../../src/cli/exitCodes.js';
-import abortExitCode from '../../../src/runtime/abortExitCode.js';
+import exitCodes from '#cli/exitCodes';
+import abortExitCode from '#runtime/abortExitCode';
 
 const aborted = (reason: unknown): AbortSignal => {
   const controller = new AbortController();
+
   controller.abort(reason);
+
   return controller.signal;
 };
 

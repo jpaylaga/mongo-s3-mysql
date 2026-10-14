@@ -10,6 +10,7 @@
     "types": ["node"],
     "outDir": "dist",
     "declaration": true,
+    "customConditions": ["source"],
     "noEmit": true
   },
   "include": ["src", "test", "vitest.config.ts", "vitest.e2e.config.ts"]

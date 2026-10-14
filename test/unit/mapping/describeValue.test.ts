@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import describeValue from '../../../src/mapping/describeValue.js';
+import describeValue from '#mapping/describeValue';
 
 describe('describeValue', () => {
   it('names what JSON.parse gave without echoing the value', () => {

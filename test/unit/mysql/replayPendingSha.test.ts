@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import replayPendingSha from '../../../src/mysql/replayPendingSha.js';
+import replayPendingSha from '#mysql/replayPendingSha';
 
 describe('replayPendingSha', () => {
   it('fits the CHAR(64) ascii column and can never equal a real sha256', () => {

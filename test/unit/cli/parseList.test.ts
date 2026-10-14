@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import parseList from '../../../src/cli/parseList.js';
+import parseList from '#cli/parseList';
 
 describe('parseList', () => {
   it('splits on commas, trims, and drops blanks', () => {

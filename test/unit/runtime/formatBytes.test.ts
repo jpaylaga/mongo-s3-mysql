@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import formatBytes from '../../../src/runtime/formatBytes.js';
+import formatBytes from '#runtime/formatBytes';
 
 describe('formatBytes', () => {
   it('keeps bytes whole and gives one decimal from KB up', () => {

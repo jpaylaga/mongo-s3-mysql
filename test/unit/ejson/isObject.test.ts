@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import isObject from '../../../src/ejson/isObject.js';
+import isObject from '#ejson/isObject';
 
 describe('isObject', () => {
   it('is a plain object: not null, not an array', () => {

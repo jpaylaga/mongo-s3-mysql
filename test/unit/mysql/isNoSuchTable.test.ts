@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import isNoSuchTable from '../../../src/mysql/isNoSuchTable.js';
+import isNoSuchTable from '#mysql/isNoSuchTable';
 
 describe('isNoSuchTable', () => {
   it('is MySQL errno 1146 and nothing else', () => {

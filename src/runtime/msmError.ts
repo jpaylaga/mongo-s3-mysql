@@ -1,4 +1,4 @@
-import type { FailureCode, MsmError } from '../types.js';
+import type { FailureCode, MsmError } from '#types';
 
 /**
  * A failure the tool classified itself. `retriable` null leaves the decision to `classifyError`
@@ -7,12 +7,17 @@ import type { FailureCode, MsmError } from '../types.js';
 export default function msmError(
   code: FailureCode,
   message: string,
-  options: { cause?: unknown; retriable?: boolean; fatal?: boolean } = {},
+  options: { cause?: unknown; retriable?: boolean; fatal?: boolean } = {}
 ): MsmError {
-  const err = new Error(message, options.cause === undefined ? undefined : { cause: options.cause }) as MsmError;
+  const err = new Error(
+    message,
+    options.cause === undefined ? undefined : { cause: options.cause }
+  ) as MsmError;
+
   err.name = 'MsmError';
   err.msmCode = code;
   err.retriable = options.retriable ?? null;
   err.fatal = options.fatal ?? false;
+
   return err;
 }

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import backoffDelay from '../../../src/runtime/backoffDelay.js';
+import backoffDelay from '#runtime/backoffDelay';
 
 describe('backoffDelay', () => {
   it('doubles the ceiling per attempt up to maxMs with full jitter', () => {
@@ -14,6 +14,7 @@ describe('backoffDelay', () => {
   it('stays within [0, ceiling] with the real random source', () => {
     for (let i = 0; i < 200; i += 1) {
       const d = backoffDelay(5, 500, 60_000);
+
       expect(d).toBeGreaterThanOrEqual(0);
       expect(d).toBeLessThanOrEqual(8000);
     }
@@ -21,7 +22,9 @@ describe('backoffDelay', () => {
 
   it('adds up to minutes over the default eight attempts', () => {
     let total = 0;
+
     for (let a = 1; a < 8; a += 1) total += backoffDelay(a, 500, 60_000, () => 1);
+
     expect(total).toBe(63_500);
   });
 });

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import clipBytes from '../../../src/mapping/clipBytes.js';
+import clipBytes from '#mapping/clipBytes';
 
 describe('clipBytes', () => {
   it('keeps text that fits and cuts at a character boundary otherwise', () => {

@@ -1,6 +1,7 @@
 /**
  * The application's own table: a surrogate id, a nullable UNIQUE `source_mongo_id` beside it and a
- * `backfill_run_id`, so imported rows dedupe on the Mongo id while live rows keep both NULL. Loaded with no change.
+ * `backfill_run_id`, so imported rows dedupe on the Mongo id while live rows keep both NULL. Loaded
+ * with no change.
  */
 const twinDdl = `CREATE TABLE \`audit_log_entries\` (
   \`id\` bigint unsigned NOT NULL AUTO_INCREMENT,

@@ -1,10 +1,17 @@
-import type { CommandName, Config, EventSink, RunContext } from '../types.js';
+import type { CommandName, Config, EventSink, RunContext } from '#types';
 
 const noop: EventSink = () => {};
 
-/** Everything a library function needs besides its clients; library code never reads env or prints. */
+/**
+ * Everything a library function needs besides its clients; library code never reads env or prints.
+ */
 export default function createContext(options: {
-  config: Config; command: CommandName; emit?: EventSink; signal?: AbortSignal; now?: () => Date; secrets?: readonly string[];
+  config: Config;
+  command: CommandName;
+  emit?: EventSink;
+  signal?: AbortSignal;
+  now?: () => Date;
+  secrets?: readonly string[];
 }): RunContext {
   return {
     config: options.config,

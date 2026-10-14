@@ -1,10 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import isMsmError from '../../../src/runtime/isMsmError.js';
-import msmError from '../../../src/runtime/msmError.js';
+import isMsmError from '#runtime/isMsmError';
+import msmError from '#runtime/msmError';
 
 describe('isMsmError', () => {
-  it('recognises the tool\'s own errors, optionally by code', () => {
+  it("recognises the tool's own errors, optionally by code", () => {
     const err = msmError('record', 'bad');
+
     expect(isMsmError(err)).toBe(true);
     expect(isMsmError(err, 'record')).toBe(true);
     expect(isMsmError(err, 'parse')).toBe(false);

@@ -1,9 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import redact from '../../../src/runtime/redact.js';
+import redact from '#runtime/redact';
 
 describe('redact', () => {
   it('masks every secret, longest first, and URI userinfo', () => {
     const uri = 'mongodb+srv://app:s3cr3t@cluster.example.net/app';
+
     expect(redact(`failed ${uri} with s3cr3t`, [uri, 's3cr3t'])).toBe('failed *** with ***');
     expect(redact('mysql://root:pw@h:3306', [])).toBe('mysql://***@h:3306');
     expect(redact('token=abc; next abc', ['abc'])).toBe('token=***; next ***');

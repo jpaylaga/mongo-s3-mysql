@@ -1,10 +1,20 @@
 import { Binary, ObjectId, Timestamp } from 'mongodb';
 import { describe, expect, it } from 'vitest';
-import idBrackets from '../../../src/mongo/idBrackets.js';
+import idBrackets from '#mongo/idBrackets';
 
 describe('idBrackets', () => {
   it('lists the eight brackets in BSON comparison order with their lowest values', () => {
-    expect(idBrackets.map((b) => b.name)).toEqual(['number', 'string', 'object', 'binData', 'objectId', 'bool', 'date', 'timestamp']);
+    expect(idBrackets.map(b => b.name)).toEqual([
+      'number',
+      'string',
+      'object',
+      'binData',
+      'objectId',
+      'bool',
+      'date',
+      'timestamp',
+    ]);
+
     expect(idBrackets[0]?.lowest).toBe(-Infinity);
     expect(idBrackets[0]?.types).toEqual(['int', 'long', 'double', 'decimal']);
     expect(idBrackets[1]?.lowest).toBe('');
@@ -18,7 +28,8 @@ describe('idBrackets', () => {
   });
 
   it('covers every exportable _id type exactly once', () => {
-    const all = idBrackets.flatMap((b) => b.types);
+    const all = idBrackets.flatMap(b => b.types);
+
     expect(new Set(all).size).toBe(all.length);
     expect(all).not.toContain('null');
     expect(all).not.toContain('minKey');

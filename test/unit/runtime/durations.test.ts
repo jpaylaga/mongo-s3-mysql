@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import durations from '../../../src/runtime/durations.js';
+import durations from '#runtime/durations';
 
 describe('durations', () => {
   it('names the hour and the day in milliseconds', () => {

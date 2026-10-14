@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import readPath from '../../../src/mapping/readPath.js';
+import readPath from '#mapping/readPath';
 
 const doc = {
   _id: { $oid: '69a4d3015a5a5a0001000001' },
@@ -25,7 +25,11 @@ describe('readPath', () => {
   });
 
   it('treats a $-wrapper as a leaf', () => {
-    expect(readPath(doc, 'created_at')).toEqual({ present: true, value: { $date: { $numberLong: '1772409601527' } } });
+    expect(readPath(doc, 'created_at')).toEqual({
+      present: true,
+      value: { $date: { $numberLong: '1772409601527' } },
+    });
+
     expect(readPath(doc, 'created_at.$date')).toEqual({ present: false, value: undefined });
     expect(readPath(doc, 'items.0.qty.$numberInt')).toEqual({ present: false, value: undefined });
     expect(readPath(doc, '_id.$oid')).toEqual({ present: false, value: undefined });
@@ -40,6 +44,10 @@ describe('readPath', () => {
 
   it('reads own keys only', () => {
     expect(readPath({}, 'toString')).toEqual({ present: false, value: undefined });
-    expect(readPath({ a: { b: 1 } }, 'a.constructor')).toEqual({ present: false, value: undefined });
+
+    expect(readPath({ a: { b: 1 } }, 'a.constructor')).toEqual({
+      present: false,
+      value: undefined,
+    });
   });
 });

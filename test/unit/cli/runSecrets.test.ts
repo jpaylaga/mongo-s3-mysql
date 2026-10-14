@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it } from 'vitest';
-import runSecrets from '../../../src/cli/runSecrets.js';
+import runSecrets from '#cli/runSecrets';
 
 describe('runSecrets', () => {
   afterEach(() => runSecrets.clear());

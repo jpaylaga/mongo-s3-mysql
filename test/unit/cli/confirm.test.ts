@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it } from 'vitest';
-import confirm from '../../../src/cli/confirm.js';
+import confirm from '#cli/confirm';
 
 const original = Object.getOwnPropertyDescriptor(process.stdin, 'isTTY');
 

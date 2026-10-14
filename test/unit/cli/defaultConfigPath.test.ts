@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import createProgram from '../../../src/cli/createProgram.js';
-import defaultConfigPath from '../../../src/cli/defaultConfigPath.js';
+import createProgram from '#cli/createProgram';
+import defaultConfigPath from '#cli/defaultConfigPath';
 
 describe('defaultConfigPath', () => {
   it('is the default of the -c flag', () => {
