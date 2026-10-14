@@ -1,0 +1,16 @@
+{
+  "mongo": { "uriEnv": "MSM_MONGO_URI", "database": "app" },
+  "s3": {
+    "bucket": "example-archive-bucket",
+    "prefix": "mongo-archive",
+    "partition": { "account_id": "111122223333", "region": "us-east-1", "cluster": "example-cluster", "database": "app" },
+    "region": "us-east-1"
+  },
+  "mysql": { "host": "mysql.example.internal", "user": "archive_loader", "database": "archive", "caFile": "global-bundle.pem" },
+  "export": { "batchPrefix": "app-archive", "concurrency": 4 },
+  "collections": [
+    { "name": "audit_log", "strategy": "timestamp-window", "field": "created_at", "window": "day" },
+    { "name": "orders", "strategy": "objectid-window", "window": "day" },
+    { "name": "coupons", "strategy": "full-collection" }
+  ]
+}

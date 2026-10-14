@@ -1,0 +1,106 @@
+{
+  "collection": "orders",
+  "table": "orders",
+  "key": {
+    "column": "mongo_id",
+    "cast": "objectId",
+    "sqlType": "CHAR(24)"
+  },
+  "runIdColumn": "import_run",
+  "chunkColumn": "_msm_chunk",
+  "extraColumn": "_extra",
+  "onCastError": "reject",
+  "columns": [
+    {
+      "column": "status",
+      "source": "status",
+      "cast": "string",
+      "sqlType": "VARCHAR(32)",
+      "note": "string 60"
+    },
+    {
+      "column": "total",
+      "source": "total",
+      "cast": "decimal",
+      "sqlType": "DECIMAL(14,2)",
+      "note": "decimal 58, int 2"
+    },
+    {
+      "column": "sequence",
+      "source": "sequence",
+      "cast": "bigint",
+      "sqlType": "BIGINT",
+      "note": "long 60"
+    },
+    {
+      "column": "paid",
+      "source": "paid",
+      "cast": "bool",
+      "sqlType": "TINYINT(1)",
+      "note": "bool 53, missing 7"
+    },
+    {
+      "column": "created_at",
+      "source": "createdAt",
+      "cast": "datetime",
+      "fsp": 3,
+      "timezone": "UTC",
+      "sqlType": "DATETIME(3)",
+      "note": "date 60, wall clock in UTC"
+    },
+    {
+      "column": "customer",
+      "source": "customer",
+      "cast": "json",
+      "sqlType": "JSON",
+      "note": "object 60"
+    },
+    {
+      "column": "tags",
+      "source": "tags",
+      "cast": "json",
+      "sqlType": "JSON",
+      "note": "array 53, missing 7"
+    }
+  ],
+  "children": [
+    {
+      "table": "orders_items",
+      "source": "items",
+      "parentColumn": "order_mongo_id",
+      "indexColumn": "item_index",
+      "columns": [
+        {
+          "column": "sku",
+          "source": "sku",
+          "cast": "string",
+          "sqlType": "VARCHAR(32)",
+          "note": "string 96"
+        },
+        {
+          "column": "qty",
+          "source": "qty",
+          "cast": "int",
+          "sqlType": "INT",
+          "note": "int 96"
+        },
+        {
+          "column": "price",
+          "source": "price",
+          "cast": "decimal",
+          "sqlType": "DECIMAL(10,2)",
+          "note": "decimal 96"
+        }
+      ]
+    }
+  ],
+  "inferred": {
+    "at": "2026-10-13T03:10:00Z",
+    "tool": "mongo-s3-mysql@0.1.0",
+    "sampled": 60,
+    "review": [
+      "note: present in 1.7% of samples -> left in _extra",
+      "_id: 1 non-ObjectId _id in the sample; such lines are rejected (key cast objectId)"
+    ]
+  }
+}

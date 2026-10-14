@@ -1,0 +1,13 @@
+{
+  "run_id": "app-archive-delta-20261020T010000Z",
+  "account_id": "111122223333", "region": "us-east-1", "cluster": "example-cluster", "database": "app",
+  "cutoff_utc": "2026-10-20T00:00:00Z",
+  "backup_mode": "delta-windowed-with-full-small-collections",
+  "requested_start_utc": "2026-10-12T23:00:00Z",
+  "collection_start_utc": { "audit_log": "2026-10-12T23:00:00Z", "orders": "2026-10-12T23:00:00Z" },
+  "covered_areas": ["example-area"],
+  "completed_chunks": 17,
+  "failed_chunks": 0,
+  "completed_at": "2026-10-20T01:04:09+00:00",
+  "notes": "written by the original exporter"
+}

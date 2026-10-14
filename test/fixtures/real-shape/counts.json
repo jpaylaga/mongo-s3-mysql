@@ -1,0 +1,1 @@
+{ "run_id": "app-archive-full-20261013T020304Z-audit_log-timestamp-window-20260302T000000Z-20260303T000000Z", "collection": "audit_log", "mode": "timestamp-window", "count_source": "countDocuments", "source_count": 12, "exported_count": 12, "matches": true }

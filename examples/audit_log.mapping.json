@@ -1,0 +1,16 @@
+{
+  "collection": "audit_log",
+  "table": "audit_log_entries",
+  "key": { "column": "source_mongo_id", "cast": "objectId" },
+  "runIdColumn": "backfill_run_id",
+  "onCastError": "reject",
+  "columns": [
+    { "column": "actor_id", "source": "actor_id", "cast": "string", "default": "" },
+    { "column": "description", "source": "description", "cast": "string", "default": "" },
+    { "column": "data", "source": "data", "cast": "json" },
+    { "column": "ip_address", "source": "ip_address", "cast": "string" },
+    { "column": "location", "source": "location", "cast": "json" },
+    { "column": "created_at", "source": "created_at", "cast": "datetime", "fsp": 0, "timezone": "Asia/Manila" },
+    { "column": "updated_at", "source": "updated_at", "cast": "datetime", "fsp": 0, "timezone": "Asia/Manila" }
+  ]
+}

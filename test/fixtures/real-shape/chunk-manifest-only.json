@@ -1,0 +1,19 @@
+{
+  "run_id": "app-archive-full-20261013T020304Z-sessions-manifest-only-full",
+  "account_id": "111122223333", "region": "us-east-1", "cluster": "example-cluster", "database": "app",
+  "collection": "sessions",
+  "mode": "manifest-only",
+  "filter": { "mode": "manifest-only", "filter": "no raw export; manifest and validation only" },
+  "format": "manifest_only",
+  "count_source": "countDocuments",
+  "source_count": 0,
+  "exported_count": 0,
+  "counts_match": true,
+  "first_id": null,
+  "last_id": null,
+  "file": null,
+  "checksum_s3_uri": null,
+  "started_at": "2026-10-13T02:10:40+00:00",
+  "completed_at": "2026-10-13T02:10:40+00:00",
+  "area": "example-area"
+}

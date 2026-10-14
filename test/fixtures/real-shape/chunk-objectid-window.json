@@ -1,0 +1,19 @@
+{
+  "run_id": "app-archive-full-20261013T020304Z-orders-objectid-window-20260301T000000Z-20260302T000000Z",
+  "account_id": "111122223333", "region": "us-east-1", "cluster": "example-cluster", "database": "app",
+  "collection": "orders",
+  "mode": "objectid-window",
+  "filter": { "mode": "objectid-window", "field": "_id", "start_utc": "2026-03-01T00:00:00+00:00", "end_utc": "2026-03-02T00:00:00+00:00", "boundary": "[start,end)" },
+  "format": "canonical_extended_jsonl_gzip",
+  "count_source": "countDocuments",
+  "source_count": 24,
+  "exported_count": 24,
+  "counts_match": true,
+  "first_id": "69a37c805a5a5a0001000001",
+  "last_id": "69a4c5705a5a5a0001000018",
+  "file": { "name": "part-000001.jsonl.gz", "bytes": 2048, "sha256": "4a1b2c3d4e5f60718293a4b5c6d7e8f90a1b2c3d4e5f60718293a4b5c6d7e8f9", "s3_uri": "s3://example-archive-bucket/mongo-archive/raw/account_id=111122223333/region=us-east-1/cluster=example-cluster/database=app/collection=orders/source_year=2026/source_month=03/source_day=01/source_hour=00/run_id=app-archive-full-20261013T020304Z-orders-objectid-window-20260301T000000Z-20260302T000000Z/part-000001.jsonl.gz" },
+  "checksum_s3_uri": "s3://example-archive-bucket/mongo-archive/raw/account_id=111122223333/region=us-east-1/cluster=example-cluster/database=app/collection=orders/source_year=2026/source_month=03/source_day=01/source_hour=00/run_id=app-archive-full-20261013T020304Z-orders-objectid-window-20260301T000000Z-20260302T000000Z/part-000001.jsonl.gz.sha256",
+  "started_at": "2026-10-13T02:10:20+00:00",
+  "completed_at": "2026-10-13T02:10:24+00:00",
+  "area": "example-area"
+}

@@ -1,0 +1,68 @@
+{
+  "name": "mongo-s3-mysql",
+  "version": "0.1.0",
+  "description": "Archive MongoDB (4.4+) or DocumentDB (5.0+) collections to S3 as gzipped Extended JSON with manifests, then load them into your own MySQL tables. Resumable, idempotent, reconcilable.",
+  "keywords": [
+    "mongodb",
+    "documentdb",
+    "s3",
+    "mysql",
+    "migration",
+    "archive",
+    "extended-json",
+    "etl"
+  ],
+  "author": {
+    "name": "Joshua Paylaga",
+    "email": "joshuapaylaga@gmail.com",
+    "url": "https://github.com/jpaylaga"
+  },
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jpaylaga/mongo-s3-mysql.git"
+  },
+  "homepage": "https://github.com/jpaylaga/mongo-s3-mysql#readme",
+  "bugs": {
+    "url": "https://github.com/jpaylaga/mongo-s3-mysql/issues"
+  },
+  "bin": {
+    "mongo-s3-mysql": "dist/cli.js"
+  },
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "examples",
+    "docs"
+  ],
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc",
+    "test": "vitest run test/unit",
+    "test:e2e": "npm run build && vitest run --config vitest.e2e.config.ts",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.1150.0",
+    "@aws-sdk/lib-storage": "^3.1150.0",
+    "commander": "^15.0.0",
+    "mongodb": "^7.7.0",
+    "mysql2": "^3.24.5",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@testcontainers/mongodb": "^12.2.1",
+    "@testcontainers/mysql": "^12.2.1",
+    "@types/node": "^26.6.5",
+    "testcontainers": "^12.2.1",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.4"
+  }
+}

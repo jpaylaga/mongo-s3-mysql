@@ -1,0 +1,10 @@
+{
+  "run_id": "app-archive-full-20261013T020304Z",
+  "account_id": "111122223333", "region": "us-east-1", "cluster": "example-cluster", "database": "app",
+  "cutoff_utc": "2026-10-13T01:00:00Z",
+  "covered_areas": ["example-area"],
+  "completed_chunks": 4,
+  "failed_chunks": 0,
+  "completed_at": "2026-10-13T02:11:00+00:00",
+  "notes": "written by the original exporter"
+}

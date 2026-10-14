@@ -1,0 +1,6 @@
+node_modules/
+dist/
+coverage/
+/mongo-s3-mysql.config.json
+/.mongo-s3-mysql/
+/mappings/
